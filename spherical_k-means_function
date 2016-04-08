@@ -85,3 +85,15 @@ void runKMeans(vector <feature> &features, vector <vector <double> > &centres, v
 						coordinate[k] += features[j].unitVector[k];
 				}
 			}
+			for(int j=0; j<dimensions; j++)
+			{
+				coordinate[j] /= count;
+				normalizationFactor += (coordinate[j]*coordinate[j]);
+			}
+			normalizationFactor = sqrt(normalizationFactor);
+			for(int j=0; j<dimensions; j++)
+				coordinate[j] /= normalizationFactor;
+			centres[i] = coordinate;
+		}
+	}
+}
